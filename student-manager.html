@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Manager</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Student Manager</h1>
+
+<button onclick="showStudents()">Show Student Data</button>
+
+<div id="output"></div>
+
+<script>
+    // Array of student objects
+    const students = [
+        { name: "Rahul", marks: [80, 75, 90] },
+        { name: "Anjali", marks: [85, 70, 95] },
+        { name: "Vikram", marks: [60, 65, 70] }
+    ];
+
+    // Function to calculate average
+    function calculateAverage(marks) {
+        let sum = 0;
+
+        for (let i = 0; i < marks.length; i++) {
+            sum += marks[i];
+        }
+
+        return (sum / marks.length).toFixed(2);
+    }
+
+    // Display student data
+    function showStudents() {
+        let result = "";
+
+        for (let i = 0; i < students.length; i++) {
+            let avg = calculateAverage(students[i].marks);
+
+            result += `
+                <p>
+                <b>Name:</b> ${students[i].name} <br>
+                <b>Marks:</b> ${students[i].marks.join(", ")} <br>
+                <b>Average:</b> ${avg}
+                </p>
+                <hr>
+            `;
+        }
+
+        document.getElementById("output").innerHTML = result;
+    }
+</script>
+
+</body>
+</html>
