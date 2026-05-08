@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Route Master Bookstore</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .section {
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .books-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .authors-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eee;
+      border-radius: 5px;
+      min-height: 40px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>📚 Route Master - Bookstore API</h1>
+
+    <div class="section">
+      <h2>Books Routes</h2>
+      <button class="books-btn" onclick="getBooks()">Get Books</button>
+    </div>
+
+    <div class="section">
+      <h2>Authors Routes</h2>
+      <button class="authors-btn" onclick="getAuthors()">Get Authors</button>
+    </div>
+
+    <div id="output">Output will appear here...</div>
+  </div>
+
+  <script>
+    async function getBooks() {
+      const response = await fetch('http://localhost:5000/books');
+      const data = await response.text();
+      document.getElementById('output').innerText = data;
+    }
+
+    async function getAuthors() {
+      const response = await fetch('http://localhost:5000/authors');
+      const data = await response.text();
+      document.getElementById('output').innerText = data;
+    }
+  </script>
+
+</body>
+</html>
